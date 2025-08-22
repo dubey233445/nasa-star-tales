@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Progress } from "@/components/ui/progress";
@@ -11,7 +11,8 @@ import {
   Volume2, 
   VolumeX,
   Home,
-  Share2
+  Share2,
+  ArrowLeft
 } from "lucide-react";
 
 interface StoryScene {
@@ -58,6 +59,7 @@ const demoStory: Story = {
 
 const StoryViewer = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [story] = useState<Story>(demoStory);
   const [currentScene, setCurrentScene] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -133,6 +135,15 @@ const StoryViewer = () => {
         {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-4">
+            <Button 
+              variant="ghost" 
+              size="sm" 
+              onClick={() => navigate(-1)}
+              className="flex items-center gap-2"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              Back
+            </Button>
             <Button variant="nebula" size="icon" asChild>
               <Link to="/">
                 <Home className="h-4 w-4" />

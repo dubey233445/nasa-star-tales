@@ -1,12 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import { Rocket, Sparkles } from "lucide-react";
+import { Rocket, Sparkles, ArrowLeft } from "lucide-react";
 
 interface StoryForm {
   childName: string;
@@ -45,6 +45,16 @@ const CreateStory = () => {
   return (
     <div className="min-h-screen p-4">
       <div className="container max-w-2xl mx-auto">
+        {/* Back Button */}
+        <div className="mb-6">
+          <Button variant="ghost" size="sm" asChild>
+            <Link to="/" className="flex items-center gap-2">
+              <ArrowLeft className="h-4 w-4" />
+              Back to Home
+            </Link>
+          </Button>
+        </div>
+
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-2 mb-4">
             <Rocket className="h-8 w-8 text-accent animate-float" />
